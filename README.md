@@ -1,1 +1,3 @@
-git
+npm install
+
+npm run dev
