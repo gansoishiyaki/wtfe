@@ -1,4 +1,5 @@
 import 'phaser';
+import { StartScene } from "./ts/scene/start"
 
 //あとでコメントアウトを解除する
 //import Scenes from './scenes/scenes';
@@ -17,9 +18,8 @@ const config: Phaser.Types.Core.GameConfig = {
     autoCenter: Phaser.Scale.CENTER_BOTH,
     parent: 'game',
   },
-  //あとでコメントアウトを解除する
-  //必要なシーンを読み込む
-  //scene: Scenes,
+  
+  scene: [StartScene],
 };
 
 export class Game extends Phaser.Game {
