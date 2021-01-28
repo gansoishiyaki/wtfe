@@ -1,14 +1,9 @@
 初回
 ```
-npm install
+yarn install
 ```
 
 run
 ```
-npm run dev
-```
-
-push
-```
-git push git@github.com.sub:gansoishiyaki/wtfe.git master:master
+yarn dev
 ```
