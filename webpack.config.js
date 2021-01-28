@@ -45,6 +45,7 @@ module.exports = {
   plugins: [
     new PhaserAssetsWebpackPlugin([
       { type: 'image', dir: '/img', rule: /^\w+\.png$/ },
+      { type: 'font', dir: '/font', rule: /^\w+\.(ttf|woff)$/ },
       //{ type: 'audio', dir: '/audio', rule: /^\w+\.(m4a|ogg)$/ }
     ], { documentRoot: './public', output: './src/assets.json' })
   ]
