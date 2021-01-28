@@ -28,13 +28,9 @@ module.exports = {
       },
     ]
   },
-  //開発用サーバを立てるときの設定
+
   devServer: {
-    contentBase: path.resolve(__dirname, "./"),
-    publicPath: "/dist/",
-    host: "127.0.0.1",
-    port: 8080,
-    open: true
+    contentBase: path.resolve(__dirname, 'public')
   },
 
   resolve: {
