@@ -1,20 +1,31 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
 const pathToPhaser = path.join(__dirname, "/node_modules/phaser/");
+const PhaserAssetsWebpackPlugin = require('phaser-assets-webpack-plugin')
 const phaser = path.join(pathToPhaser, "dist/phaser.js");
 
 module.exports = {
-  entry: "./index.ts",      //エントリポイント。依存関係整理の起点にするファイル。
+  entry: {
+    app: './src/index.ts'
+  },
   output: {
-    path: path.resolve(__dirname, "dist"),    //distというディレクトリに生成する
-    filename: "bundle.js"   //バンドルして書き出すファイル名
+    path: path.resolve(__dirname, 'public/js'),
+    filename: '[name].bundle.js'
   },
   module: {
     rules: [
       //.tsがケツにつくファイルを探索し、TypeScriptとして読み込む(ts-loader)
-      { test: /\.ts$/, loader: "ts-loader", exclude: "/node_modules/" },
-      //phaser-hogehoge.jsというファイルの内容はPhaserというグローバル変数に内容を突っ込む(expose-loader)
-      { test: /phaser\.js$/, loader: "expose-loader?Phaser" }
+      {
+        test: /\.js$/,
+        exclude: '/node_modules/',
+        include: path.resolve(__dirname, 'src/'),
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            ['@babel/preset-env']
+          ]
+        }
+      },
     ]
   },
   //開発用サーバを立てるときの設定
@@ -33,5 +44,12 @@ module.exports = {
     alias: {
       phaser: phaser
     }
-  }
+  },
+
+  plugins: [
+    new PhaserAssetsWebpackPlugin([
+      { type: 'image', dir: '/img', rule: /^\w+\.png$/ },
+      //{ type: 'audio', dir: '/audio', rule: /^\w+\.(m4a|ogg)$/ }
+    ], { documentRoot: './public', output: './src/assets.json' })
+  ]
 };
