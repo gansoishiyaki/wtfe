@@ -1,5 +1,5 @@
 import 'phaser';
-import { StartScene } from "./scene/start"
+import { StartScene } from "./class/scene/start"
 
 //あとでコメントアウトを解除する
 //import Scenes from './scenes/scenes';
@@ -7,9 +7,10 @@ import { StartScene } from "./scene/start"
 //コンフィグ
 const config = {
   //画面サイズ
-  width: 360,
-  height: 640,
+  width: 32*6,
+  height: 32*11,
   type: Phaser.AUTO,
+  pixelArt: true,
   //ゲーム画面を描画するcanvasを書き出す先
   parent: 'game',
   //ゲーム画面を伸縮して表示させるための設定
