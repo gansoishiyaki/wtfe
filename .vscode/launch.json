@@ -11,7 +11,7 @@
       "sourceMaps": true,
       "url": "http://0.0.0.0:8080/",
       "webRoot": "${workspaceRoot}",
-      "preLaunchTask": "build-npm-script",
+      "preLaunchTask": "run phaser-ts",
     }
   ]
 }

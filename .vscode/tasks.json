@@ -1,14 +1,15 @@
 {
 	"version": "2.0.0",
 	"tasks": [{
-    "label": "build-npm-script",
-    "command": "yarn",
+    "label": "watch typescript",
     "type": "shell",
+    "command": "yarn",
+    "group": "build",
     "isBackground": true,
     "args": [
       "--prefix",
       "${workspaceFolder}/src",
-      "dev"
+      "watch"
     ],
     "problemMatcher": [
       {
@@ -19,7 +20,7 @@
         "background": {
             "activeOnStart": true,
             "beginsPattern": "^.*Project is running at.*$",
-            "endsPattern": "^.*Compiled successfully.*$"
+            "endsPattern": "^.*compiled successfully.*$"
         }
       }, {
         "base": "$tslint-webpack",
@@ -29,9 +30,25 @@
         "background": {
             "activeOnStart": true,
             "beginsPattern": "^.*Project is running at.*$",
-            "endsPattern": "^.*Compiled successfully.*$"
+            "endsPattern": "^.*compiled successfully.*$"
         }
       }
     ]
-  }]
+  },
+  {
+    "label": "run phaser-ts",
+    "type": "shell",
+    "command": "yarn",
+    "args": [
+      "--prefix",
+      "${workspaceFolder}/src",
+      "serve"
+    ],
+    "group": "build",
+    "isBackground": true,
+    "problemMatcher": ["$ts-webpack-watch", "$tslint-webpack-watch"],
+    "dependsOn": [
+      "watch typescript"
+    ],
+  }, ]
 }
