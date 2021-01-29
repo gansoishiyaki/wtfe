@@ -5,6 +5,7 @@ const PhaserAssetsWebpackPlugin = require('phaser-assets-webpack-plugin')
 const phaser = path.join(pathToPhaser, "dist/phaser.js");
 
 module.exports = {
+  devtool: "source-map",
   entry: {
     app: './src/index.ts'
   },
