@@ -3,4 +3,6 @@ dist/
 
 package-lock.json
 
+.DS_Store
 *.map
+*.LICENSE.txt
